@@ -1,0 +1,54 @@
+Dylan Koch
+CS256
+Project Logical Design
+
+show table:
+	columns: title, genre, date_of_publish
+	primary key: (title)
+
+author table:
+	columns: title, firstname, lastname
+	primary key: (title, firstname, lastname)
+	foreign key: (title) references show
+
+season table:
+	columns: year, season_name
+	primary key: (year, season_name)
+
+production table:
+	columns: title, year, season_name
+	primary key: (title, year, season_name)
+	foreign key: (title) references show
+	foreign key: (year, season_name) references season
+
+director table:
+	columns: title, year, season name, firstname, lastname
+	primary key: (title, year, season_name, firstname, lastname)
+	foreign key: (title, year, season_name) references production
+
+theatre_section table:
+	columns: section_name, ticket_price
+	primary key: (section_name)
+
+production_member table:
+	columns: firstname, lastname
+	primary key: (firstname, lastname)
+
+performance table:
+	columns: title, year, season_name, date_and_time
+	primary key: (title, year, season_name, date_and_time)
+	foreign key: (title, year, season_name) references production
+
+ticket table:
+	columns: title, year, season_name, date_and_time, row, seat_number, holder_firstname, holder_lastname, section_name
+	primary_key: (title, year, season_name, date_and_time, row, seat_number)
+	foreign_key: (title, year, season_name, date_and_time) references performance
+	foreign key: (section_name) references theatre_section
+
+production_role table:
+	columns: title, year, season_name, firstname, lastname, role
+	primary key: (title, year, season_name, firstname, lastname)
+	foreign key: (title, year, season_name) references production
+	foreign key: (firstname, lastname) references production_memeber
+
+

@@ -1,0 +1,23 @@
+Dylan Koch
+CS256
+Project Stage 5: Indices
+
+
+CREATE INDEX what_role_check ON production_role (title, role);
+
+	I felt this was necessary, as the number of times we will check for who was cast/crew/orchestra for a production seemed like my most common query, which would all benefit from speeding up (see Queries 2, 3, 4)
+
+
+CREATE INDEX production_role_names ON production_role (member_firstname, member_lastname);
+
+	This combo helps when we want to know how many shows someone has acted in, is someone in a given show, and how many shows someone has been generally involved with.
+
+
+CREATE INDEX ticket_firstname ON ticket (holder_firstname);
+
+	This will be crucial, as checking whether or not the firstname is NULL is how I tell if a seat has been sold or not, so any time we want to look at anything associated with ticket sales, we will need to check the firstname.
+
+
+CREATE INDEX performance_time ON performance (date_and_time);
+
+	Checking ticket sales for a givn perfornamce requires the date and time, so having an index for this information would help speed up ticet checks, as well as what shows are after a given Timestamp.

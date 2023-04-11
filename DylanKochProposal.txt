@@ -1,0 +1,52 @@
+Dylan Koch
+CS256 Project Proposal
+
+********
+*Domain*
+********
+
+My project will be to create a database that a theatre company could use to manage the shows for it's season/ of season's past, show dates/times, the cast/crew/orchestra of each show, as well as what the price of tickets will be.
+
+A show is a peice of data that would contain the title, the author, whether or not it is a musical, when the show would be performed, who is directing, and during what season the show was performed.  Every show is directed by at least one director, and involves at least one cast member (special case one-man-shows) and a crew, and if it is a musical, there will be an orchestra.  All shows have categories (comedy, tragedy, musical, etc.).  Each show will have a set list of run dates, as unless you work on broadway, shows must have a finite run.  The theatre will contain sections: orchestra, front mezzanine, and rear mezzanine which will have assigned ticket prices.  Since theatre's have limited seating, we will need to keep track of whether or not there are still tickets left for a given show, and if a show has already closed, of course there are no available tickets.
+
+************
+*Motivation*
+************
+
+This database is aimed at keeping the viewing public informed about shows in there area, as well as how much a night at the theatre would set them back.  This database will also allow theatre management to keep an accurate record of the shows they have run in the past, so they can appropriately plan for the future, as very few theatre companies are fans of running the same show within a few years of each other.  The theatre management team are who will have full access over the database, with the ability to alter data when necessary, while the outside user will have read-only access to the database.  
+
+The outside user will have a website that they can use to navigate the shows of the current season, as well as check in on cast/crew/orchestra members of this season's shows and shows of years past.  Theatre management will require a seperate access application (perhaps password protected?) so they can make modifications to the theatre info, add in shows, as well as update participant information.
+
+Theatres of years past (and my high school theatre program) largely kept records via a binder filled with playbills, which, while plenty nostalgic, are also very easily destroyed via fire, flooding, or bored small children.  Having a dedicated system to keep track of and store all of the data from past shows will save heads of theatres countless headaches, and save them from buying more and more binders.
+
+************
+*Data Needs*
+************
+
+Who has directed 'The 39 Steps'?
+
+Who is in the cast of 'The Merchant of Venice'?
+
+Who is in the crew for Whose Wives are They Anyway?
+
+How many people are in the orchestra of 'The Music Man'?
+
+What genres have been run more than once?
+
+How expensive is an orchestra seat?
+
+What show(s) ran 2017?
+
+How many ticets were sold for The Crucible?
+
+On what days are Whose Wives running?
+
+What shows are there tickets available for?
+
+What directors has Lida Jackson stage managed for?
+
+What shows have sold out?
+
+How many times has Oliver Espinosa been cast in a show?
+
+What is the smallest production crew we have had?

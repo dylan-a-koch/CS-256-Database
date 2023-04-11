@@ -1,0 +1,73 @@
+Dylan Koch
+CS256 Project Conceptual Design
+
+*************
+*Entity Sets*
+*************
+
+Show: A Written set of lines and directions that can be performed live for an audience.
+	title(primary key): the title of the show
+	author(Multi because there can be more than one, and Composite because first/last name): the person(s) who wrote the show
+	genre: something like drama, musical, comedy, etc.
+	date_of_publish: when the show was published 
+
+Production(weak, relies on show, season):
+	director(Composite because first/last name and Multi because there could be more than one director): The person(s) who are directing this production
+
+TheatreSection: A section of the theatre where tickets can be bought
+	section_name(primary): the name of this section(orchestra, balcony, mezanine)
+	ticket_price: the price of a ticket in this section
+
+ProductionMember: A person who is involved in either the cast, crew, or orchestra
+	name(primary): The name of this production member
+
+Season: A period of time where the theatre runs a show(fall, spring, winter)
+	year(primary key): the year of this season
+	season_name(primary key): the time of year of this season
+
+Ticket(weak, depends on performance): A ticket for a given performance
+	seat(Composite because it has a row and seat number): The seat in the theatre the ticket corresponds to
+	holder_name(Composite because of first/last name): The name of the holder of the ticket if it has been purchased, will be null 
+
+Performance(weak, depends on production):
+	date_and_time(discriminator): The date and time of a given performance
+*******************
+*Relationship Sets*
+*******************
+
+	T Production M is_a 1 Show T
+		1) All productions must be a show
+		2) A show can be used for multiple productions
+		3) A production can only be one Show
+		4) Every show in this database will have been produced at least once
+	
+	T ProductionMember M has_role_in M Production T
+		role: the name of the role of the person
+		1) Every production member will have been in at least one show
+		2) A production can have multiple production members with roles
+		3) A production member can have roles in multiple productions
+		4) Every production has some production members to it
+	
+	P Season M has M Production T
+		1) There could be off-seasons where there are no productions
+		2) A production could be run for multiple seasons (e.g. Broadway)
+		3) A season can have multiple Productions running
+		4) All Productions will have been in at least one season
+	
+	T Ticket M is_in 1 TheatreSection T
+		1) Every Ticket is in some section of the theatre
+		2) Each theatre section can have multiple tickets in it
+		3) Each ticket is in at most one section of the theatre
+		4) Every section of the theatre will have some ticketed section
+
+	T Ticket M is_for 1 Performance T
+		1) Every ticket is for a performance
+		2) A given performance will have multiple tickets for it
+		3) A ticket is only for one performance
+		4) Every Performance has at least one ticket for it
+
+	T Performance M is_of 1 Production T
+		1) All performances are for at least one production
+		2) A production could have more than one performance
+		3) A performance is for only one production
+		4) All productions will have a performance
